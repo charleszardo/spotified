@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name spotifiedApp
- * @description
- * # spotifiedApp
- *
- * Main module of the application.
- */
 var spotified = angular.module('spotifiedApp', ['firebase', 'angular-md5', 'ui.router', 'spotify'])
 
 spotified.config(function ($stateProvider, $urlRouterProvider) {
@@ -16,21 +8,13 @@ spotified.config(function ($stateProvider, $urlRouterProvider) {
       url: '/',
       templateUrl: 'home/home.html',
       resolve: {
-        auth: function($state, AuthService){
-          return AuthService.$requireSignIn().catch(function(){
-            $state.go('login');
-          });
-        },
-        userId: function(AuthService){
+        requireNoAuth: function($state, AuthService){
           return AuthService.$requireSignIn().then(function(auth){
-            return auth.uid;
+            $state.go('playlists');
+          }, function(error){
+            return;
           });
-        },
-        playlists: function(PlaylistsService, AuthService){
-          return AuthService.$requireSignIn().then(function(auth){
-            return PlaylistsService.forUser(auth.uid).$loaded();
-          });
-        },
+        }
       }
     })
     .state('login', {
@@ -40,7 +24,7 @@ spotified.config(function ($stateProvider, $urlRouterProvider) {
       resolve: {
         requireNoAuth: function($state, AuthService){
           return AuthService.$requireSignIn().then(function(auth){
-            $state.go('home');
+            $state.go('playlists');
           }, function(error){
             return;
           });
@@ -54,7 +38,7 @@ spotified.config(function ($stateProvider, $urlRouterProvider) {
       resolve: {
         requireNoAuth: function($state, AuthService){
           return AuthService.$requireSignIn().then(function(auth){
-            $state.go('home');
+            $state.go('playlists');
           }, function(error){
             return;
           });

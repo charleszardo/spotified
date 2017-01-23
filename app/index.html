@@ -22,10 +22,7 @@
     <div ng-controller="NavCtrl as nav">
       <div ng-show="nav.firebaseUser">
         <p>Hello, {{ nav.firebaseUser.email }}</p>
-        <button ng-click="nav.auth.$signOut()">Sign Out</button>
-      </div>
-      <div ng-hide="nav.firebaseUser">
-        <p>Welcome, please <a ng-href="#/signin">sign in</a> or <a ng-href="#/signup">sign up</a>.</p>
+        <button ng-click="nav.signOut()">Sign Out</button>
       </div>
     </div>
     <ui-view></ui-view>

@@ -1,4 +1,4 @@
-spotified.controller('NavCtrl', ['AuthService', function(AuthService) {
+spotified.controller('NavCtrl', ['$location', 'AuthService', function($location, AuthService) {
   var self = this;
 
   self.auth = AuthService;
@@ -6,4 +6,10 @@ spotified.controller('NavCtrl', ['AuthService', function(AuthService) {
   self.auth.$onAuthStateChanged(function(firebaseUser) {
     self.firebaseUser = firebaseUser;
   });
+
+  self.signOut = function() {
+    self.auth.$signOut().then(function(){
+      $location.url('/');
+    });
+  }
 }]);
