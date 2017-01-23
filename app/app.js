@@ -28,4 +28,15 @@ spotified.config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
 })
 
+spotified.config(function() {
+  var config = {
+    apiKey: "AIzaSyBSv9ENuL0m8h7tNqQXZZr8EzpaiWg_udg",
+    authDomain: "spotified-930c5.firebaseapp.com",
+    databaseURL: "https://spotified-930c5.firebaseio.com",
+    storageBucket: "spotified-930c5.appspot.com",
+    messagingSenderId: "358951966806"
+  };
+  firebase.initializeApp(config);
+})
+
 spotified.constant('FirebaseUrl', 'https://spotified-930c5.firebaseio.com/ ');
