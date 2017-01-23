@@ -91,6 +91,9 @@ spotified.config(function ($stateProvider, $urlRouterProvider) {
         playlist: function(playlists, $stateParams){
           return playlists.$getRecord($stateParams.playlistId);
         },
+        songs: function(PlaylistService, $stateParams) {
+          return PlaylistService.getSongs($stateParams.playlistId).$loaded();
+        }
       }
     })
 

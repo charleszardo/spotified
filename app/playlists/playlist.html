@@ -1,1 +1,10 @@
 {{ playlistCtrl.title }}
+<ul>
+<li ng-repeat="song in playlistCtrl.songs">
+  {{ song }}
+  <div ng-click=""
+</li>
+</ul>
+<form ng-submit="playlistCtrl.addSong()">
+  <input type="text" placeholder="Add Song" ng-model="playlistCtrl.songTitle">
+</form>
