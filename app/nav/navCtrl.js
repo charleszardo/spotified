@@ -1,7 +1,7 @@
-spotified.controller('NavCtrl', ['Auth', function(Auth) {
+spotified.controller('NavCtrl', ['AuthService', function(AuthService) {
   var self = this;
 
-  self.auth = Auth;
+  self.auth = AuthService;
 
   self.auth.$onAuthStateChanged(function(firebaseUser) {
     self.firebaseUser = firebaseUser;

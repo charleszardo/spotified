@@ -1,4 +1,4 @@
-spotified.controller('PlaylistsCtrl', ['$firebaseObject', '$firebaseArray', 'Auth', '$state', 'md5', 'auth', 'userId', 'playlists', function($firebaseObject, $firebaseArray, Auth, $state, md5, auth, userId, playlists) {
+spotified.controller('PlaylistsCtrl', ['userId', 'playlists', function(userId, playlists) {
   var self = this;
 
   self.playlistName = "";

@@ -1,4 +1,4 @@
-spotified.factory('Playlists', function($firebaseArray){
+spotified.factory('PlaylistsService', function($firebaseArray){
   var playlistsRef = firebase.database().ref('playlists');
 
   var o = {};

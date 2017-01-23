@@ -1,4 +1,4 @@
-spotified.controller('AuthCtrl', function(Auth, $state){
+spotified.controller('AuthCtrl', ['AuthService', '$state', function(AuthService, $state){
   var self = this;
 
   self.user = {
@@ -7,7 +7,7 @@ spotified.controller('AuthCtrl', function(Auth, $state){
   };
 
   self.login = function (){
-    Auth.$signInWithEmailAndPassword(self.user.email, self.user.password).then(function (auth){
+    AuthService.$signInWithEmailAndPassword(self.user.email, self.user.password).then(function (auth){
       $state.go('home');
     }, function (error){
       self.error = error;
@@ -15,10 +15,10 @@ spotified.controller('AuthCtrl', function(Auth, $state){
   };
 
   self.register = function (){
-    Auth.$createUserWithEmailAndPassword(self.user.email, self.user.password).then(function (user){
+    AuthService.$createUserWithEmailAndPassword(self.user.email, self.user.password).then(function (user){
       $state.go('home');
     }, function (error){
       self.error = error;
     });
   };
-});
+}]);

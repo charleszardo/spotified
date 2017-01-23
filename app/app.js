@@ -16,19 +16,19 @@ spotified.config(function ($stateProvider, $urlRouterProvider) {
       url: '/',
       templateUrl: 'home/home.html',
       resolve: {
-        auth: function($state, Users, Auth){
-          return Auth.$requireSignIn().catch(function(){
+        auth: function($state, Users, AuthService){
+          return AuthService.$requireSignIn().catch(function(){
             $state.go('login');
           });
         },
-        userId: function(Users, Auth){
-          return Auth.$requireSignIn().then(function(auth){
+        userId: function(Users, AuthService){
+          return AuthService.$requireSignIn().then(function(auth){
             return auth.uid;
           });
         },
-        playlists: function(Playlists, Auth){
-          return Auth.$requireSignIn().then(function(auth){
-            return Playlists.forUser(auth.uid).$loaded();
+        playlists: function(PlaylistsService, AuthService){
+          return AuthService.$requireSignIn().then(function(auth){
+            return PlaylistsService.forUser(auth.uid).$loaded();
           });
         },
       }
@@ -38,8 +38,8 @@ spotified.config(function ($stateProvider, $urlRouterProvider) {
       controller: 'AuthCtrl as authCtrl',
       templateUrl: 'auth/login.html',
       resolve: {
-        requireNoAuth: function($state, Auth){
-          return Auth.$requireSignIn().then(function(auth){
+        requireNoAuth: function($state, AuthService){
+          return AuthService.$requireSignIn().then(function(auth){
             $state.go('home');
           }, function(error){
             return;
@@ -52,8 +52,8 @@ spotified.config(function ($stateProvider, $urlRouterProvider) {
       controller: 'AuthCtrl as authCtrl',
       templateUrl: 'auth/register.html',
       resolve: {
-        requireNoAuth: function($state, Auth){
-          return Auth.$requireSignIn().then(function(auth){
+        requireNoAuth: function($state, AuthService){
+          return AuthService.$requireSignIn().then(function(auth){
             $state.go('home');
           }, function(error){
             return;
@@ -66,19 +66,19 @@ spotified.config(function ($stateProvider, $urlRouterProvider) {
       controller: 'PlaylistsCtrl as playlistsCtrl',
       templateUrl: 'playlists/playlists.html',
       resolve: {
-        auth: function($state, Users, Auth){
-          return Auth.$requireSignIn().catch(function(){
+        auth: function($state, Users, AuthService){
+          return AuthService.$requireSignIn().catch(function(){
             $state.go('home');
           });
         },
-        userId: function(Users, Auth){
-          return Auth.$requireSignIn().then(function(auth){
+        userId: function(Users, AuthService){
+          return AuthService.$requireSignIn().then(function(auth){
             return auth.uid;
           });
         },
-        playlists: function(Playlists, Auth){
-          return Auth.$requireSignIn().then(function(auth){
-            return Playlists.forUser(auth.uid).$loaded();
+        playlists: function(PlaylistsService, AuthService){
+          return AuthService.$requireSignIn().then(function(auth){
+            return PlaylistsService.forUser(auth.uid).$loaded();
           });
         },
       }
