@@ -1,0 +1,9 @@
+<div>
+  <input type="text" ng-model="searchCtrl.searchString" ng-keyup="searchCtrl.search()">
+  <ul>
+    <li ng-repeat="item in searchCtrl.results">
+      {{ item.name }} by <span ng-repeat="artist in item.artists">{{ artist }}</span>
+    </li>
+  </ul>
+  <!-- <a ng-href="/#/playlists">Playlists</a> -->
+</div>

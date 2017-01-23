@@ -1,4 +1,4 @@
-spotified.factory('Users', function($firebaseArray, $firebaseObject){
+spotified.factory('UsersService', function($firebaseArray, $firebaseObject){
   var usersRef = firebase.database().ref('users');
   var users = $firebaseArray(usersRef);
 

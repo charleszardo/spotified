@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-var spotified = angular.module('spotifiedApp', ['firebase', 'angular-md5', 'ui.router'])
+var spotified = angular.module('spotifiedApp', ['firebase', 'angular-md5', 'ui.router', 'spotify'])
 
 spotified.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -16,12 +16,12 @@ spotified.config(function ($stateProvider, $urlRouterProvider) {
       url: '/',
       templateUrl: 'home/home.html',
       resolve: {
-        auth: function($state, Users, AuthService){
+        auth: function($state, AuthService){
           return AuthService.$requireSignIn().catch(function(){
             $state.go('login');
           });
         },
-        userId: function(Users, AuthService){
+        userId: function(AuthService){
           return AuthService.$requireSignIn().then(function(auth){
             return auth.uid;
           });
@@ -66,12 +66,12 @@ spotified.config(function ($stateProvider, $urlRouterProvider) {
       controller: 'PlaylistsCtrl as playlistsCtrl',
       templateUrl: 'playlists/playlists.html',
       resolve: {
-        auth: function($state, Users, AuthService){
+        auth: function($state, AuthService){
           return AuthService.$requireSignIn().catch(function(){
             $state.go('home');
           });
         },
-        userId: function(Users, AuthService){
+        userId: function(AuthService){
           return AuthService.$requireSignIn().then(function(auth){
             return auth.uid;
           });
