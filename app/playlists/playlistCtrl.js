@@ -1,5 +1,6 @@
 spotified.controller('PlaylistCtrl', ['playlist', function(playlist) {
   var self = this;
 
-  console.log(playlist);
+  self.playlist = playlist;
+  self.title = playlist.title;
 }]);
