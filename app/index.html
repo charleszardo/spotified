@@ -19,7 +19,15 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
+    <div ng-controller="NavCtrl as nav">
+      <div ng-show="nav.firebaseUser">
+        <p>Hello, {{ nav.firebaseUser.email }}</p>
+        <button ng-click="nav.auth.$signOut()">Sign Out</button>
+      </div>
+      <div ng-hide="nav.firebaseUser">
+        <p>Welcome, please <a ng-href="#/signin">sign in</a> or <a ng-href="#/signup">sign up</a>.</p>
+      </div>
+    </div>
     <ui-view></ui-view>
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -39,6 +47,7 @@
     <script src="app.js"></script>
     <script src="auth/authCtrl.js"></script>
     <script src="auth/authService.js"></script>
+    <script src="nav/navCtrl.js"></script>
     <!-- endbuild -->
 </body>
 </html>
