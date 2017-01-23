@@ -83,6 +83,16 @@ spotified.config(function ($stateProvider, $urlRouterProvider) {
         },
       }
     })
+    .state('playlists.playlist', {
+      url: '/{playlistId}',
+      controller: 'PlaylistCtrl as playlistCtrl',
+      templateUrl: 'playlists/playlist.html',
+      resolve: {
+        playlist: function(playlists, $stateParams){
+          return playlists.$getRecord($stateParams.playlistId);
+        },
+      }
+    })
 
   $urlRouterProvider.otherwise('/');
 })
