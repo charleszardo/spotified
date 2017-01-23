@@ -2,7 +2,7 @@
 <ul>
 <li ng-repeat="song in playlistCtrl.songs">
   {{ song }}
-  <div ng-click=""
+  <div ng-click="playlistCtrl.removeSong(song)">x</div>
 </li>
 </ul>
 <form ng-submit="playlistCtrl.addSong()">
