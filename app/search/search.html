@@ -19,7 +19,8 @@
 
   <ul>
     <li ng-repeat="item in searchCtrl.results track by $index">
-      {{ item.name }}
+      <song obj="item"></song>
+      <!-- {{ item.name }} -->
       <!-- {{ item.name }} by <span ng-repeat="artist in item.artists"></span> -->
     </li>
   </ul>
