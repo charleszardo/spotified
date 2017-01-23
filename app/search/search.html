@@ -1,8 +1,26 @@
 <div>
-  <input type="text" ng-model="searchCtrl.searchString" ng-keyup="searchCtrl.search()">
+  <form ng-submit="searchCtrl.search()">
+    <input type="text" placeholder="Search" ng-model="searchCtrl.searchString">
+  </form>
+
+  <br>
+  <label>
+    <input type="radio" ng-model="searchCtrl.searchType" value="track" checked>
+    Track
+  </label><br/>
+  <label>
+    <input type="radio" ng-model="searchCtrl.searchType" value="artist">
+    Artist
+  </label><br/>
+  <label>
+    <input type="radio" ng-model="searchCtrl.searchType" value="album">
+    Album
+  </label><br/>
+
   <ul>
-    <li ng-repeat="item in searchCtrl.results">
-      {{ item.name }} by <span ng-repeat="artist in item.artists">{{ artist }}</span>
+    <li ng-repeat="item in searchCtrl.results track by $index">
+      {{ item.name }}
+      <!-- {{ item.name }} by <span ng-repeat="artist in item.artists"></span> -->
     </li>
   </ul>
   <!-- <a ng-href="/#/playlists">Playlists</a> -->
