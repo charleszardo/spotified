@@ -1,0 +1,13 @@
+<div>
+  <form ng-submit="playlistsCtrl.addPlaylist()">
+    <input type="text" placeholder="Add Playlist" ng-model="playlistsCtrl.playlistName">
+  </form>
+  <ul>
+    <li ng-repeat="playlist in playlistsCtrl.playlists">
+      {{ playlist.title }}
+    </li>
+  </ul>
+</div>
+{{ playlistsCtrl.profile }}
+{{ playlistsCtrl.firebaseUser }}
+<a ng-href="/#/search">Search</a>

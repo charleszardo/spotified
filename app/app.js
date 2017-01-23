@@ -14,7 +14,24 @@ spotified.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: 'home/home.html'
+      templateUrl: 'home/home.html',
+      resolve: {
+        auth: function($state, Users, Auth){
+          return Auth.$requireSignIn().catch(function(){
+            $state.go('login');
+          });
+        },
+        userId: function(Users, Auth){
+          return Auth.$requireSignIn().then(function(auth){
+            return auth.uid;
+          });
+        },
+        playlists: function(Playlists, Auth){
+          return Auth.$requireSignIn().then(function(auth){
+            return Playlists.forUser(auth.uid).$loaded();
+          });
+        },
+      }
     })
     .state('login', {
       url: '/login',
@@ -42,6 +59,28 @@ spotified.config(function ($stateProvider, $urlRouterProvider) {
             return;
           });
         }
+      }
+    })
+    .state('playlists', {
+      url: '/playlists',
+      controller: 'PlaylistsCtrl as playlistsCtrl',
+      templateUrl: 'playlists/playlists.html',
+      resolve: {
+        auth: function($state, Users, Auth){
+          return Auth.$requireSignIn().catch(function(){
+            $state.go('home');
+          });
+        },
+        userId: function(Users, Auth){
+          return Auth.$requireSignIn().then(function(auth){
+            return auth.uid;
+          });
+        },
+        playlists: function(Playlists, Auth){
+          return Auth.$requireSignIn().then(function(auth){
+            return Playlists.forUser(auth.uid).$loaded();
+          });
+        },
       }
     })
 
