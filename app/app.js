@@ -18,12 +18,32 @@ spotified.config(function ($stateProvider, $urlRouterProvider) {
     })
     .state('login', {
       url: '/login',
-      templateUrl: 'auth/login.html'
+      controller: 'AuthCtrl as authCtrl',
+      templateUrl: 'auth/login.html',
+      resolve: {
+        requireNoAuth: function($state, Auth){
+          return Auth.$requireSignIn().then(function(auth){
+            $state.go('home');
+          }, function(error){
+            return;
+          });
+        }
+      }
     })
     .state('register', {
       url: '/register',
-      templateUrl: 'auth/register.html'
-    });
+      controller: 'AuthCtrl as authCtrl',
+      templateUrl: 'auth/register.html',
+      resolve: {
+        requireNoAuth: function($state, Auth){
+          return Auth.$requireSignIn().then(function(auth){
+            $state.go('home');
+          }, function(error){
+            return;
+          });
+        }
+      }
+    })
 
   $urlRouterProvider.otherwise('/');
 })
