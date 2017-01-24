@@ -7,7 +7,6 @@ spotified.controller('PlaylistCtrl', ['playlist', 'songs', function(playlist, so
   self.songTitle = ""
 
   self.addSong = function(songObj) {
-    console.log(songObj.artists[0].name)
     var trackNo = self.songs.length,
         songData,
         song;
