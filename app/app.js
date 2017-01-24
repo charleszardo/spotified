@@ -1,6 +1,6 @@
 'use strict';
 
-var spotified = angular.module('spotifiedApp', ['firebase', 'angular-md5', 'ui.router', 'spotify', 'mwl.confirm'])
+var spotified = angular.module('spotifiedApp', ['firebase', 'angular-md5', 'ui.router', 'spotify', 'mwl.confirm', 'dndLists'])
 
 spotified.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
