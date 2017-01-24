@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "spotified-930c5",
+    "prod": "spotified-930c5"
+  }
+}
