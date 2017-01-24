@@ -10,8 +10,8 @@ Spotified allows users to search for songs using Spotify's Web API and add them 
  - Select songs that are found via search and add them to a *Top 10* list using `angular-drag-and-drop-lists`.
  - Edit notes and images in place using `angular-xeditable`
  - Confirmation popups using `angular-bootstrap-confirm`
- 
-## Requirements
-
 
 ## To Run
+- Clone repo
+- Install dependencies: `npm install` & `bower install`
+- Start server: `grunt serve`
