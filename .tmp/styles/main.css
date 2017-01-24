@@ -43,12 +43,12 @@ nav {
   color: #adadad;
 }
 
-.button-primary {
+.button-primary, .editable-buttons .btn-primary {
   background-color: #1DB954;
   border-color: #189a46;
 }
 
-.button-primary:hover {
+.button-primary:hover, .editable-buttons .btn-primary:hover {
   background-color: #191414;
   border-color: #0e0b0b;
 }
