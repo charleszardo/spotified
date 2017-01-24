@@ -4,22 +4,20 @@
       <h1>Your Playlists</h1>
     </div>
 
-    <p class="text-center">
-      <a ui-sref="login" class="btn btn-lg btn-default button-default">Login</a> <a ui-sref="register" class="btn btn-lg btn-primary button-primary">Register</a>
-    </p>
+    <div class="text-center">
+      <form ng-submit="playlistsCtrl.addPlaylist()">
+        <div class="form-group">
+          <input type="text" placeholder="Add Playlist" class="form-control" ng-model="playlistsCtrl.playlistName">
+        </div>
+      </form>
+      <ul class="text-left">
+        <li ng-repeat="playlist in playlistsCtrl.playlists">
+          <a ui-sref="playlists.playlist({ playlistId: playlist.$id })">{{ playlist.title }}</a>
+        </li>
+      </ul>
+    </div>
   </div>
   <div>
-    <form ng-submit="playlistsCtrl.addPlaylist()">
-      <input type="text" placeholder="Add Playlist" ng-model="playlistsCtrl.playlistName">
-    </form>
-    <ul>
-      <li ng-repeat="playlist in playlistsCtrl.playlists">
-        <a ui-sref="playlists.playlist({ playlistId: playlist.$id })">{{ playlist.title }}</a>
-        {{ playlist }}
-      </li>
-    </ul>
+
   </div>
-  {{ playlistsCtrl.profile }}
-  {{ playlistsCtrl.firebaseUser }}
-  <a ng-href="/#/search">Search</a>
 </ui-view>
