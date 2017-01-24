@@ -99,8 +99,4 @@ spotified.config(function() {
   firebase.initializeApp(config);
 })
 
-spotified.constant('FirebaseUrl', 'https://spotified-930c5.firebaseio.com/ ');
-
-// spotified.run(function(editableOptions) {
-//   editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
-// });
+spotified.constant('FirebaseUrl', 'https://spotified-930c5.firebaseio.com/');

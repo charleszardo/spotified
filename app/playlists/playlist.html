@@ -19,22 +19,32 @@
         dnd-drop="false"
         class="text-left">
         <li ng-repeat="song in playlistCtrl.songs">
-            <div class="song-title">
-              <h4>{{ song.data.title }}</h4>
+          <div class="row song-container">
+            <div class="col-1">
+              <div class="song-image">
+                <img src="https://thumb7.shutterstock.com/display_pic_with_logo/2892448/342092249/stock-vector-cool-comic-book-bubble-text-pop-art-retro-style-342092249.jpg">
+              </div>
             </div>
-            <div class="song-artist song-details">
-              Artist: {{ song.data.artist }}
+            <div class="col-5 song-info">
+              <div class="song-title">
+                <h4>{{ song.data.title }}</h4>
+              </div>
+              <div class="song-artist song-details">
+                Artist: {{ song.data.artist }}
+              </div>
+              <div class="song-album song-details">
+                Album: {{ song.data.album }}
+              </div>
+              <div id="note" onbeforesave="playlistCtrl.updateSong(song)" editable-text="song.data.note" e-form="noteForm" class="song-notes song-details">
+                Note: {{ song.data.note }}
+              </div>
+              <a ng-click="imageForm.$show()" ng-hide="imageForm.$visible">edit image</a> |
+              <a ng-click="noteForm.$show()" ng-hide="noteForm.$visible">edit comment</a> |
+              <a ng-click="playlistCtrl.removeSong(song)">remove</a>
             </div>
-            <div class="song-album song-details">
-              Album: {{ song.data.album }}
-            </div>
-            <div id="note" onbeforesave="playlistCtrl.updateSong(song)" editable-text="song.data.note" e-form="textBtnForm" class="song-notes song-details">
-              Note: {{ song.data.note }}
-            </div>
-            <a ng-click="textBtnForm.$show()" ng-hide="textBtnForm.$visible">edit comment</a> |
-            <a ng-click="playlistCtrl.removeSong(song)">remove</a>
-        </li>
-    </ul>
+          </div>
+      </li>
+  </ul>
     <!-- <ul class="text-left">
       <li ng-repeat="song in playlistCtrl.songs">
         <span>

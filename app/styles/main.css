@@ -61,35 +61,28 @@ nav {
   margin: 10px;
 }
 
+.song-container {
+  padding: 15px;
+}
+
+.song-image img {
+  width: 50px;
+  height: 50px;
+}
 .song-details {
   font-size: 12px;
   color: #adadad;
 }
 
-/**
- * The dnd-list should always have a min-height,
- * otherwise you can't drop to it once it's empty
- */
 ul[dnd-list] {
     min-height: 42px;
     padding-left: 0px;
 }
 
-/**
- * The dndDraggingSource class will be applied to
- * the source element of a drag operation. It makes
- * sense to hide it to give the user the feeling
- * that he's actually moving it.
- */
 ul[dnd-list] .dndDraggingSource {
     display: none;
 }
 
-/**
- * An element with .dndPlaceholder class will be
- * added to the dnd-list while the user is dragging
- * over it.
- */
 ul[dnd-list] .dndPlaceholder {
     background-color: #ddd;
     display: block;
@@ -106,9 +99,6 @@ ul[dnd-list] li {
     margin-bottom: -1px;
 }
 
-/**
- * Show selected elements in green
- */
 ul[dnd-list] li.selected {
     background-color: #dff0d8;
     color: #3c763d;
