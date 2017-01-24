@@ -2,6 +2,7 @@ spotified.controller('NavCtrl', ['$location', 'AuthService', function($location,
   var self = this;
 
   self.auth = AuthService;
+  self.signOutText = 'Sign Out';
 
   self.auth.$onAuthStateChanged(function(firebaseUser) {
     self.firebaseUser = firebaseUser;
