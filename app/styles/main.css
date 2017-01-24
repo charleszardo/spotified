@@ -4,6 +4,7 @@ ul {
 
 a {
   color: #1DB954;
+  cursor: pointer;
 }
 
 a:hover {

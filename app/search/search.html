@@ -1,7 +1,7 @@
 <div class="page-wrapper">
   <form ng-submit="searchCtrl.search()">
     <div class="form-group">
-      <input type="text" placeholder="Search" class="form-control" ng-model="searchCtrl.searchString">
+      <input type="text" placeholder="Search {{ searchCtrl.searchType }}s" class="form-control" ng-model="searchCtrl.searchString">
     </div>
   </form>
 
