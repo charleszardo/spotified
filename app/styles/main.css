@@ -38,6 +38,11 @@ nav {
   font-size: 30px;
 }
 
+#note, #note:hover {
+  font-style: normal;
+  color: #adadad;
+}
+
 .button-primary {
   background-color: #1DB954;
   border-color: #189a46;

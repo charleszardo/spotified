@@ -6,12 +6,6 @@ spotified.controller('PlaylistCtrl', ['$window', '$scope', 'playlist', 'songs', 
   self.songs = songs;
   self.songTitle = "";
   self.maxSongs = 10;
-  self.newSong = [];
-
-  self.songs.$watch(function(event) {
-    console.log("WATCHIN!")
-    console.log(event);
-  });
 
   self.export = function() {
     var uri = "data:application/json;charset=UTF-8," + encodeURIComponent(self.playlistJSON());
@@ -20,7 +14,6 @@ spotified.controller('PlaylistCtrl', ['$window', '$scope', 'playlist', 'songs', 
   }
 
   self.playlistJSON = function() {
-    console.log("OKAY!")
     var playlistObj = { title: self.title, songs: []},
         songObj;
 
@@ -76,6 +69,13 @@ spotified.controller('PlaylistCtrl', ['$window', '$scope', 'playlist', 'songs', 
     return { data: songData, playlistId: self.playlist.$id }
   }
 
+  self.updateSong = function (song) {
+    self.songs.$remove(song).then(function (){
+      self.songs.$add(song).then(function (){
+      });
+    });
+  }
+
   self.removeSong = function(song) {
     self.songs.$remove(song).then(function (){
     });
@@ -85,9 +85,5 @@ spotified.controller('PlaylistCtrl', ['$window', '$scope', 'playlist', 'songs', 
     var songsRef = firebase.database().ref('songs');
 
     return $firebaseArray(songsRef.child(playlistId));
-  }
-
-  self.resetNewSong = function() {
-    self.newSong = [];
   }
 }]);

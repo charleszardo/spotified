@@ -22,8 +22,9 @@
       dnd-disable-if="playlistCtrl.songs.length >= playlistCtrl.maxSongs"
       class="text-left">
       <li ng-repeat="item in searchCtrl.results track by $index"
-          dnd-draggable="item"
-          dnd-moved="searchCtrl.results.splice($index, 1)"
+          dnd-draggable="playlistCtrl.parseItem(item)"
+          dnd-moved="playlistCtrl.addSong(item)"
+          dnd-canceled="playlistCtrl.addSong(item)"
           dnd-effect-allowed="move"
           dnd-selected="models.selected = item"
           ng-class="{'selected': models.selected === item}"

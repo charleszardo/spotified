@@ -6,11 +6,13 @@ spotified.factory('PlaylistService', ['$firebaseArray', function($firebaseArray)
   o.getSongs = function(playlistId) {
     return $firebaseArray(songsRef.child(playlistId));
   }
-  // 
-  // o.addSong = function(song) {
-  //   console.log(song);
-  //   return $firebaseArray(songsRef).$add(song)
-  // }
+
+  o.updateSong = function(song) {
+    var list = $firebaseArray(songsRef);
+    var rec = list.$getRecord(song.$id);
+    console.log(song)
+    console.log(rec)
+  }
 
   return o;
 }]);

@@ -1,6 +1,10 @@
 'use strict';
 
-var spotified = angular.module('spotifiedApp', ['firebase', 'angular-md5', 'ui.router', 'spotify', 'mwl.confirm', 'dndLists'])
+var spotified = angular.module('spotifiedApp', ['firebase', 'angular-md5', 'ui.router', 'spotify', 'mwl.confirm', 'dndLists', 'xeditable'])
+
+spotified.run(function(editableOptions) {
+  editableOptions.theme = 'bs3';
+});
 
 spotified.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -96,3 +100,7 @@ spotified.config(function() {
 })
 
 spotified.constant('FirebaseUrl', 'https://spotified-930c5.firebaseio.com/ ');
+
+// spotified.run(function(editableOptions) {
+//   editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
+// });
