@@ -19,6 +19,7 @@ body {
 
 .page-header {
   border-bottom: none;
+  text-align: center;
 }
 
 .page-wrapper {
