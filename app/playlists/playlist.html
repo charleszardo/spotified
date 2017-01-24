@@ -22,7 +22,7 @@
           <div class="row song-container">
             <div class="col-1">
               <div class="song-image" onbeforesave="playlistCtrl.updateSong(song)" editable-text="song.data.customImage" e-form="imageForm">
-                <img ng-src="{{ song.data.customImage }}">
+                <img ng-show="!!song.data.customImage" ng-src="{{ song.data.customImage }}">
               </div>
             </div>
             <div class="col-5 song-info">
@@ -35,12 +35,19 @@
               <div class="song-album song-details">
                 Album: {{ song.data.album }}
               </div>
-              <div id="note" onbeforesave="playlistCtrl.updateSong(song)" editable-text="song.data.note" e-form="noteForm" class="song-notes song-details">
+              <div ng-show="!!song.data.note" id="note" onbeforesave="playlistCtrl.updateSong(song)" editable-text="song.data.note" e-form="noteForm" class="song-notes song-details">
                 Note: {{ song.data.note }}
               </div>
-              <a ng-click="imageForm.$show()">edit image</a> |
-              <a ng-click="noteForm.$show()">edit comment</a> |
-              <a ng-click="playlistCtrl.removeSong(song)">remove</a>
+              <br>
+              <a ng-click="imageForm.$show()">
+                <span ng-show="!!song.data.customImage">edit image</span>
+                <span ng-hide="!!song.data.customImage">add image</span>
+              </a> |
+              <a ng-click="noteForm.$show()">
+                <span ng-show="!!song.data.note">edit note</span>
+                <span ng-hide="!!song.data.note">add note</span>
+              </a> |
+              <a ng-click="playlistCtrl.removeSong(song)">remove track</a>
             </div>
           </div>
         </li>
