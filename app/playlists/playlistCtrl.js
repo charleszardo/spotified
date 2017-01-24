@@ -6,10 +6,21 @@ spotified.controller('PlaylistCtrl', ['playlist', 'songs', function(playlist, so
   self.songs = songs;
   self.songTitle = ""
 
-  self.addSong = function() {
-    var trackNo = self.songs.length;
+  self.addSong = function(songObj) {
+    console.log(songObj.artists[0].name)
+    var trackNo = self.songs.length,
+        songData,
+        song;
+
     if (trackNo >= 10) { return; }
-    var song = { data: { title: self.songTitle }, playlistId: self.playlist.$id }
+
+    songData = { title: songObj.name,
+                 artist: songObj.artists[0].name,
+                 album: songObj.album.name,
+                 note: '',
+                 customImage: null }
+    song = { data: songData, playlistId: self.playlist.$id }
+
     self.songs.$add(song).then(function (){
       self.songTitle = '';
     });
