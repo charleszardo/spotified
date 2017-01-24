@@ -15,14 +15,32 @@
     </a>
   </div>
   <div class="text-center">
-    <ul class="text-left">
+    <ul dnd-list="playlistCtrl.songs" class="text-left">
+        <li ng-repeat="song in playlistCtrl.songs"
+            dnd-draggable="song"
+            dnd-moved="playlistCtrl.songs.splice($index, 1)"
+            dnd-effect-allowed="move"
+            >
+            <div class="song-title">
+              <h4>{{ song.data.title }}</h4>
+            </div>
+            <div class="song-artist song-details">
+              Artist: {{ song.data.artist }}
+            </div>
+            <div class="song-album song-details">
+              Album: {{ song.data.album }}
+            </div>
+            <a ng-click="playlistCtrl.removeSong(song)">remove</a>
+        </li>
+    </ul>
+    <!-- <ul class="text-left">
       <li ng-repeat="song in playlistCtrl.songs">
         <span>
           {{ song.data.title }} by {{ song.data.artist }} on {{ song.data.album }}
         </span>
         <div ng-click="playlistCtrl.removeSong(song)">x</div>
       </li>
-    </ul>
+    </ul> -->
     <search></search>
   </div>
 </div>

@@ -18,10 +18,20 @@
       Album
     </label>
   </div>
-  <ul>
-    <li ng-repeat="item in searchCtrl.results track by $index">
-      <song obj="item" ng-click="playlistCtrl.addSong(item)"></song>
-    </li>
+  <ul dnd-list="searchCtrl.results"
+      dnd-disable-if="playlistCtrl.songs.length >= playlistCtrl.maxSongs"
+      class="text-left">
+      <li ng-repeat="item in searchCtrl.results track by $index"
+          dnd-draggable="item"
+          dnd-moved="searchCtrl.results.splice($index, 1)"
+          dnd-effect-allowed="move"
+          dnd-selected="models.selected = item"
+          ng-class="{'selected': models.selected === item}"
+          class="song"
+          >
+          <!-- <song obj="item" ng-click="playlistCtrl.addSong(item)"></song> -->
+          <song obj="item"></song>
+      </li>
   </ul>
-  <!-- <a ng-href="/#/playlists">Playlists</a> -->
+  <a ng-href="/#/playlists">Playlists</a>
 </div>
