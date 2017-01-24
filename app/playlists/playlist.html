@@ -1,11 +1,16 @@
-{{ playlistCtrl.title }}
-<search></search>
-<ul>
-<li ng-repeat="song in playlistCtrl.songs">
-  {{ song }}
-  <div ng-click="playlistCtrl.removeSong(song)">x</div>
-</li>
-</ul>
-<form ng-submit="playlistCtrl.addSong()">
-  <input type="text" placeholder="Add Song" ng-model="playlistCtrl.songTitle">
-</form>
+<div class="page-wrapper">
+  <div class="page-header">
+    <h1>{{ playlistCtrl.title }}</h1>
+  </div>
+  <div class="text-center">
+    <ul class="text-left">
+      <li ng-repeat="song in playlistCtrl.songs">
+        <span>
+          {{ song.data.title }} by {{ song.data.artist }} on {{ song.data.album }}
+        </span>
+        <div ng-click="playlistCtrl.removeSong(song)">x</div>
+      </li>
+    </ul>
+    <search></search>
+  </div>
+</div>
