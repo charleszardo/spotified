@@ -15,14 +15,14 @@
     </a>
   </div>
   <div class="text-center">
-    <ul dnd-list="playlistCtrl.songs"
-        dnd-drop="false"
-        class="text-left">
+      <ul dnd-list="playlistCtrl.songs"
+          dnd-drop="false"
+          class="text-left">
         <li ng-repeat="song in playlistCtrl.songs">
           <div class="row song-container">
             <div class="col-1">
-              <div class="song-image">
-                <img src="https://thumb7.shutterstock.com/display_pic_with_logo/2892448/342092249/stock-vector-cool-comic-book-bubble-text-pop-art-retro-style-342092249.jpg">
+              <div class="song-image" onbeforesave="playlistCtrl.updateSong(song)" editable-text="song.data.customImage" e-form="imageForm">
+                <img ng-src="{{ song.data.customImage }}">
               </div>
             </div>
             <div class="col-5 song-info">
@@ -38,21 +38,13 @@
               <div id="note" onbeforesave="playlistCtrl.updateSong(song)" editable-text="song.data.note" e-form="noteForm" class="song-notes song-details">
                 Note: {{ song.data.note }}
               </div>
-              <a ng-click="imageForm.$show()" ng-hide="imageForm.$visible">edit image</a> |
-              <a ng-click="noteForm.$show()" ng-hide="noteForm.$visible">edit comment</a> |
+              <a ng-click="imageForm.$show()">edit image</a> |
+              <a ng-click="noteForm.$show()">edit comment</a> |
               <a ng-click="playlistCtrl.removeSong(song)">remove</a>
             </div>
           </div>
-      </li>
-  </ul>
-    <!-- <ul class="text-left">
-      <li ng-repeat="song in playlistCtrl.songs">
-        <span>
-          {{ song.data.title }} by {{ song.data.artist }} on {{ song.data.album }}
-        </span>
-        <div ng-click="playlistCtrl.removeSong(song)">x</div>
-      </li>
-    </ul> -->
+        </li>
+      </ul>
     <search></search>
   </div>
 </div>

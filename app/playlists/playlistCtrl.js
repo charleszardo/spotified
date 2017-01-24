@@ -45,7 +45,7 @@ spotified.controller('PlaylistCtrl', ['$window', '$scope', 'playlist', 'songs', 
                  artist: songObj.artists[0].name,
                  album: songObj.album.name,
                  note: '',
-                 customImage: null }
+                 customImage: '' }
     song = { data: songData, playlistId: self.playlist.$id }
 
     self.songs.$add(song).then(function (){
