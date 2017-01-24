@@ -2,7 +2,17 @@
   <div class="page-header">
     <h1>{{ playlistCtrl.title }}</h1>
     <a ng-click="playlistCtrl.export()">export</a>
-    <a ng-click="playlistsCtrl.removePlaylist(playlistCtrl.playlist)">delete</a>
+    <a mwl-confirm
+      title="Are you sure?"
+      message="Are you really sure you want to delete <b>{{ playlistCtrl.title }}</b>?"
+      confirm-text="Yes <i class='glyphicon glyphicon-ok'></i>"
+      cancel-text="No <i class='glyphicon glyphicon-remove'></i>"
+      on-confirm="playlistsCtrl.removePlaylist(playlistCtrl.playlist)"
+      on-cancel="cancelClicked = true"
+      confirm-button-type="danger"
+      cancel-button-type="default">
+      delete
+    </a>
   </div>
   <div class="text-center">
     <ul class="text-left">
