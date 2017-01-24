@@ -3,7 +3,7 @@ ul {
 }
 
 a {
-  color: #1DB954;
+  color: #1db954;
   cursor: pointer;
 }
 
@@ -34,7 +34,7 @@ body {
 }
 
 #logo {
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 30px;
 }
 
@@ -44,7 +44,7 @@ body {
 }
 
 .button-primary, .editable-buttons .btn-primary {
-  background-color: #1DB954;
+  background-color: #1db954;
   border-color: #189a46;
 }
 
@@ -63,6 +63,12 @@ body {
 
 .search-type input {
   margin: 10px;
+}
+
+.playlist-instructions {
+  font-size: 11px;
+  font-style: italic;
+  color: #adadad;
 }
 
 .song-container {

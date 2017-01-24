@@ -15,6 +15,7 @@
     </a>
   </div>
   <div class="text-center">
+      <p class="playlist-instructions" ng-hide="playlistCtrl.songs.length > 0">drag tracks here to add</p>
       <ul dnd-list="playlistCtrl.songs"
           dnd-drop="false"
           class="text-left">
