@@ -51,3 +51,7 @@ nav {
 .page-header h1 {
   text-align: center;
 }
+
+.search-type input {
+  margin: 10px;
+}
