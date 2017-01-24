@@ -37,7 +37,6 @@ spotified.controller('SearchCtrl', ['Spotify', function(Spotify) {
     Spotify.search(self.searchString, 'album').then(function (data) {
       angular.forEach(data.albums.items, function(album) {
         Spotify.getAlbumTracks(album.id).then(function (data) {
-          console.log(data);
           self.results = self.results.concat(data.items)
         });
       });
